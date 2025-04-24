@@ -16,16 +16,28 @@ const { Content } = await post.render();
 ---
 
 <Layout title={`${post.data.title} | Your Name`}>
+  {post.data.image && (
+    <div class="relative w-full h-64 md:h-96 mb-10 overflow-hidden rounded-2xl shadow-lg">
+      <img
+        src={post.data.image}
+        alt={post.data.title}
+        class="w-full h-full object-cover object-center opacity-80"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
+    </div>
+  )}
   <article class="max-w-3xl mx-auto">
-    <header class="mb-8">
-      <h1 class="text-sky-800 text-4xl font-bold mb-4">{post.data.title}</h1>
-      <time class="text-gray-400">
-        {formatTZ(post.data.pubDate, 'MMMM d, yyyy', { timeZone: 'UTC' })}
-      </time>
-    </header>
-    
-    <div class="prose prose-invert max-w-none">
-      <Content />
+    <div class="bg-gray-900/50 border border-gray-800 p-6 md:p-10 rounded-lg mb-12 transition hover:border-gray-700">
+      <header class="mb-8">
+        <h1 class="text-sky-800 text-4xl font-bold mb-4 font-playfair">{post.data.title}</h1>
+        <time class="text-gray-400">
+          {formatTZ(post.data.pubDate, 'MMMM d, yyyy', { timeZone: 'UTC' })}
+        </time>
+      </header>
+      <div class="prose prose-invert max-w-none">
+        <Content />
+      </div>
     </div>
   </article>
 </Layout>
