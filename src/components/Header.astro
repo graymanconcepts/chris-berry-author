@@ -19,8 +19,16 @@ const isActive = (path: string) => {
 <header class="bg-[#161B22] border-b border-gray-800 relative">
   <nav class="container mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
-      <a href="/" class="text-2xl font-bold text-white hover:text-blue-400 transition">
-        Chris Berry - Author
+      <a href="/" class="flex items-center gap-3 group">
+        <svg class="w-8 h-8 text-blue-400 group-hover:text-blue-500 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="4" width="16" height="16" rx="2" fill="currentColor" class="text-blue-100"/>
+          <path d="M8 8h8M8 12h8M8 16h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-playfair text-3xl md:text-4xl font-extrabold tracking-tight flex items-center" style="text-shadow: 0 2px 8px rgba(0,0,0,0.16);">
+          <span class="text-blue-400 group-hover:text-blue-500 transition">Chris Berry</span>
+          <span class="mx-2 w-1 h-8 bg-gray-500 rounded-full inline-block" style="height:1.5em;width:2px;"></span>
+          <span class="text-white">Author</span>
+        </span>
       </a>
       <ul class="hidden md:flex space-x-6"> 
         {navItems.map(item => (
