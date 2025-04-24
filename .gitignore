@@ -24,6 +24,6 @@ pnpm-debug.log*
 .idea/
 
 # other folders
-.bolt/
+.bolt
 .codesandbox
-.vscode/
+.vscode
