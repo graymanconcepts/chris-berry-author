@@ -2,42 +2,34 @@
 import Layout from "../layouts/Layout.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import Achievement from "../components/Achievement.astro";
+import SocialIcon from "../components/SocialIcon.astro";
 ---
 
 <Layout title="About | Chris Berry - Author">
   <div class="max-w-4xl mx-auto">
-    <div class="mb-12">
-      <h1 class="text-4xl font-bold mb-6">About Me</h1>
-      <img
-        src="/images/author-photo.png"
-        alt="Author photo"
-        class="float-right ml-8 mb-8 w-64 h-74 object-cover rounded-lg shadow-lg"
-      />
-      <div class="prose prose-invert max-w-none">
-        <p class="text-xl mb-4">
-          Hello there! I’m Chris Berry, a multi-talented author with a distinctive
-          background and diverse interests. Raised in a small town, I became
-          captivated by literature and storytelling at an early age. After
-          serving in the military and working as a police officer in the Kansas
-          City metro area, I’ve gone on to pursue software development but never
-          abandoned my passion for writing.
-        </p>
-        <p class="mb-4">
-          I’ve written numerous books acclaimed for their gripping plots,
-          dynamic characters, and fast-paced action. As an enthusiastic reader
-          myself, I recognize the significance of storytelling and strive to
-          create books that keep readers engaged and engrossed.
-        </p>
-        <p class="mb-4">
-          Apart from writing, I’m also an accomplished photographer and digital
-          artist. I strongly believe that creativity is a fundamental aspect of
-          human expression and draws inspiration from a variety of sources.
-        </p>
-        Whether writing, taking photographs, or creating digital art, I am constantly
-        exploring new ways to express myself and connect with others through my artistic
-        and storytelling abilities.
+    <!-- LinkedIn-Style Hero Section -->
+    <section class="relative w-full mb-20">
+      <!-- Banner background -->
+      <div class="w-full h-48 md:h-64 bg-gray-800 overflow-hidden">
+        <img src="/images/aboutheader.jpeg" alt="About banner" class="w-full h-full object-cover object-center" />
       </div>
-    </div>
+      <!-- Author portrait overlay -->
+      <div class="absolute left-1/2 top-36 md:top-48 -translate-x-1/2 z-20">
+        <img src="/images/author-photo.png" alt="Chris Berry portrait" class="w-40 h-40 md:w-52 md:h-52 object-cover object-top rounded-full border-8 border-blue-400 shadow-2xl bg-gray-900" />
+      </div>
+      <!-- Content below -->
+      <div class="flex flex-col items-center justify-center px-4 pt-32 md:pt-40 pb-10">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white font-playfair drop-shadow-xl mb-2 tracking-tight text-center">Chris Berry</h1>
+        <div class="text-xl md:text-2xl text-blue-200 font-semibold mb-6 text-center">Author • Technologist • Storyteller</div>
+        <div class="max-w-2xl mx-auto text-center text-lg text-gray-200 font-medium mb-6">
+          From small-town roots to the front lines of technology and fiction, I create stories and experiences that challenge, inspire, and entertain.
+        </div>
+        <div class="w-20 h-1 bg-blue-400 rounded-full mb-6"></div>
+        <div class="max-w-xl mx-auto bg-blue-900/70 border-l-4 border-blue-400 p-6 rounded-lg shadow text-blue-100 text-xl italic">
+          "Whether writing, taking photographs, or creating digital art, I am constantly exploring new ways to express myself and connect with others through my artistic and storytelling abilities."
+        </div>
+      </div>
+    </section>
   </div>
 
   <!-- <section class="max-w-4xl mx-auto mb-4 border border-gray-800 rounded-lg p-6">
@@ -66,15 +58,25 @@ import Achievement from "../components/Achievement.astro";
     </p>
   </section>
 
-  <section  class="max-w-4xl mx-auto mb-4 border border-gray-800 rounded-lg p-6">
-    <SectionHeading title="Contact" />
-    <p class="text-gray-300 mb-4">
-      I love hearing from readers! You can reach me through social media or send
-      me an email at [your email].
+  <section class="max-w-4xl mx-auto mb-4 border border-gray-800 rounded-lg p-6">
+    <SectionHeading title="Connect" />
+    <p class="text-gray-300 mb-6 text-lg">
+      I love hearing from readers, fellow writers, and creative collaborators! The best way to connect is through my social channels below—whether you want to share your thoughts, ask a question, or explore a partnership, just reach out. I check my DMs and mentions regularly.
     </p>
-    <p class="text-gray-300">
-      For media inquiries and speaking engagements, please contact my literary
-      agent: [Agent Name] at [agent email/contact].
+    <div class="flex flex-col items-center mb-2">
+      <span class="mb-3 text-blue-200 text-base">For the latest updates, events, and direct interaction, join the conversation on Facebook:</span>
+      <a href="https://www.facebook.com/profile.php?id=100091741922032" target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full shadow-lg font-semibold text-lg transition mt-2 mb-2">
+        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22.675 0h-21.35C.596 0 0 .592 0 1.326v21.348C0 23.408.596 24 1.325 24H12.82v-9.294H9.692V11.01h3.127V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.92.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.696h-3.12V24h6.116C23.404 24 24 23.408 24 22.674V1.326C24 .592 23.404 0 22.675 0"/>
+        </svg>
+        <span>Chris Berry - Author on Facebook</span>
+      </a>
+      <p class="text-gray-300 text-center mt-3 max-w-md">
+        Follow my Facebook Page for the latest news, release announcements, behind-the-scenes content, and to connect directly via comments and Messenger. I’d love to hear from you!
+      </p>
+    </div>
+    <p class="text-gray-400 text-sm text-center mt-2">
+      For media or business inquiries, please DM me on LinkedIn or Instagram.
     </p>
   </section>
 </Layout>

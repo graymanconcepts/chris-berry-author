@@ -9,7 +9,19 @@ const sortedBooks = books.sort((a, b) => b.data.publishDate.valueOf() - a.data.p
 
 <Layout title="Books | Chris Berry - Author">
   <div class="max-w-6xl mx-auto">
-    <h1 class="text-4xl font-bold mb-8">My Books</h1>
+    <div class="flex flex-col items-center mb-10">
+      <div class="flex items-center gap-3">
+        <svg class="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="4" width="16" height="16" rx="2" fill="currentColor" class="text-blue-100"/>
+          <path d="M8 8h8M8 12h8M8 16h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1 class="font-playfair text-5xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-xl">My Books</h1>
+      </div>
+      <svg class="mt-2 mb-2 w-48 h-6" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 12 Q60 24 120 12 T190 12" stroke="#60a5fa" stroke-width="6" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="text-lg text-blue-200 font-medium text-center">Stories that challenge, inspire, and entertain.</div>
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {sortedBooks.map(book => (
         <BookCard
