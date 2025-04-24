@@ -1,0 +1,80 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import Achievement from "../components/Achievement.astro";
+---
+
+<Layout title="About | Chris Berry - Author">
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold mb-6">About Me</h1>
+      <img
+        src="/images/author-photo.png"
+        alt="Author photo"
+        class="float-right ml-8 mb-8 w-64 h-74 object-cover rounded-lg shadow-lg"
+      />
+      <div class="prose prose-invert max-w-none">
+        <p class="text-xl mb-4">
+          Hello there! I’m Chris Berry, a multi-talented author with a distinctive
+          background and diverse interests. Raised in a small town, I became
+          captivated by literature and storytelling at an early age. After
+          serving in the military and working as a police officer in the Kansas
+          City metro area, I’ve gone on to pursue software development but never
+          abandoned my passion for writing.
+        </p>
+        <p class="mb-4">
+          I’ve written numerous books acclaimed for their gripping plots,
+          dynamic characters, and fast-paced action. As an enthusiastic reader
+          myself, I recognize the significance of storytelling and strive to
+          create books that keep readers engaged and engrossed.
+        </p>
+        <p class="mb-4">
+          Apart from writing, I’m also an accomplished photographer and digital
+          artist. I strongly believe that creativity is a fundamental aspect of
+          human expression and draws inspiration from a variety of sources.
+        </p>
+        Whether writing, taking photographs, or creating digital art, I am constantly
+        exploring new ways to express myself and connect with others through my artistic
+        and storytelling abilities.
+      </div>
+    </div>
+  </div>
+
+  <!-- <section class="max-w-4xl mx-auto mb-4 border border-gray-800 rounded-lg p-6">
+    <SectionHeading title="Achievements & Recognition" />
+    <div class="space-y-8">
+      <Achievement
+        year="2024"
+        title="Latest Novel Release"
+        description="Publication of 'The Midnight Chronicles' by [Publisher Name]"
+      />
+      <Achievement
+        year="2023"
+        title="Literary Award Finalist"
+        description="Shortlisted for the [Award Name] for outstanding contribution to [genre]"
+      />
+    </div>
+  </section> -->
+
+  <section class="max-w-4xl mx-auto mb-4 border border-gray-800 rounded-lg p-6">
+    <SectionHeading title="Writing Philosophy" />
+    <p class="text-gray-300">
+      I believe in creating stories that not only entertain but also challenge
+      readers to think differently about the world around them. Each book is a
+      journey we take together, exploring the depths of human experience through
+      the power of words.
+    </p>
+  </section>
+
+  <section  class="max-w-4xl mx-auto mb-4 border border-gray-800 rounded-lg p-6">
+    <SectionHeading title="Contact" />
+    <p class="text-gray-300 mb-4">
+      I love hearing from readers! You can reach me through social media or send
+      me an email at [your email].
+    </p>
+    <p class="text-gray-300">
+      For media inquiries and speaking engagements, please contact my literary
+      agent: [Agent Name] at [agent email/contact].
+    </p>
+  </section>
+</Layout>

@@ -1,0 +1,74 @@
+---
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/blog', label: 'Tips and Tricks' },
+  { href: '/books', label: 'My Books' },
+  { href: '/writings', label: 'Writings' },
+  { href: '/about', label: 'About' },
+];
+
+const currentPath = Astro.url.pathname;
+const isActive = (path: string) => {
+  if (path === '/') {
+    return currentPath === path;
+  }
+  return currentPath.startsWith(path);
+};
+---
+
+<header class="bg-[#161B22] border-b border-gray-800 relative">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      <a href="/" class="text-2xl font-bold text-white hover:text-blue-400 transition">
+        Chris Berry - Author
+      </a>
+      <ul class="hidden md:flex space-x-6"> 
+        {navItems.map(item => (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                'transition',
+                isActive(item.href) ? 'text-blue-400' : 'text-gray-300 hover:text-white'
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <button id="menu-toggle" class="md:hidden block focus:outline-none"> 
+        <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6H20M4 12H20M4 18H11M13 18V16H20M4 18V16H11M13 12V10H20M4 12V10H11M13 6V4H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </div>
+    <ul id="menu-content" class="hidden absolute bg-[#161B22] text-white p-4 mt-2 w-full left-0 right-0 z-50 md:hidden"> 
+      {navItems.map(item => (
+        <li class="mb-2">
+          <a
+            href={item.href}
+            class="block text-lg hover:text-blue-400 transition"
+            onClick={() => {
+                const menuContent = document.getElementById('menu-content');
+                menuContent?.classList.add('hidden');
+            }}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuContent = document.getElementById('menu-content');
+
+  if (menuToggle && menuContent) { // Check if elements exist
+    menuToggle.addEventListener('click', () => {
+      menuContent.classList.toggle('hidden');
+    });
+  }
+</script>

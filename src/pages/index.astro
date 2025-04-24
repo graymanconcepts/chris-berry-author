@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import { getCollection } from 'astro:content';
+import { format as formatTZ } from 'date-fns-tz';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const books = await getCollection('books');
+const latestBook = books
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())[0];
+---
+
+<Layout title="Home | Chris Berry - Author">
+  <Hero
+    name="Chris Berry"
+    tagline="A storyteller masquerading as an author."
+    image="/images/hero-background.jpg"
+  />
+
+  <div class="max-w-4xl mx-auto px-4">
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-8">Latest Release</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-900/50 p-6 rounded-lg border border-gray-800">
+        <img
+          src={latestBook.data.coverImage}
+          alt={`Cover of ${latestBook.data.title}`}
+          class="w-full rounded-lg shadow-lg"
+        />
+        <div>
+          <h2 class="text-sky-800 text-4xl font-bold mb-2">{latestBook.data.title}</h2>
+          <p class="text-gray-300 mb-4">{latestBook.data.description}</p>
+          <a
+            href={`/books/${latestBook.slug}`}
+            class="text-blue-400 hover:text-blue-300"
+          >
+            Learn more →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold mb-8">Latest Posts</h2>
+      <div class="space-y-8">
+        {sortedPosts.map(post => (
+          <article class="border border-gray-800 rounded-lg p-6 hover:border-gray-700 transition">
+            <h3 class="text-sky-800 text-2xl font-semibold mb-2">
+              <a href={`/blog/${post.slug}`} class="hover:text-blue-400">
+                {post.data.title}
+              </a>
+            </h3>
+            <time class="text-gray-400 text-sm">
+              {formatTZ(post.data.pubDate, 'MMMM d, yyyy', { timeZone: 'UTC' })}
+            </time>
+            <p class="mt-4 text-gray-300">{post.data.description}</p>
+          </article>
+        ))}
+      </div>
+      <div class="mt-8">
+        <a href="/blog" class="text-blue-400 hover:text-blue-300">
+          View all posts →
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>

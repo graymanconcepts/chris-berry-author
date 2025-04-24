@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BookCard from '../../components/BookCard.astro';
+import { getCollection } from 'astro:content';
+
+const books = await getCollection('books');
+const sortedBooks = books.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+---
+
+<Layout title="Books | Chris Berry - Author">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-4xl font-bold mb-8">My Books</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {sortedBooks.map(book => (
+        <BookCard
+          title={book.data.title}
+          description={book.data.description}
+          coverImage={book.data.coverImage}
+          url={`/books/${book.slug}`}
+        />
+      ))}
+    </div>
+  </div>
+</Layout>

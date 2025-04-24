@@ -1,0 +1,28 @@
+---
+interface Props {
+  store: string;
+  url: string;
+}
+
+const { store, url } = Astro.props;
+
+const getStoreColor = (store: string) => {
+  switch (store.toLowerCase()) {
+    case 'amazon':
+      return 'bg-[#FF9900]';
+    case 'barnes & noble':
+      return 'bg-[#295A3D]';
+    default:
+      return 'bg-blue-600';
+  }
+};
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`inline-block px-6 py-2 rounded-lg text-white font-medium ${getStoreColor(store)} hover:opacity-90 transition`}
+>
+  Buy on {store}
+</a>

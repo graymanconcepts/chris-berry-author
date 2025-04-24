@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import BuyButton from '../../components/BuyButton.astro';
+import { format as formatTZ } from 'date-fns-tz';
+
+export async function getStaticPaths() {
+  const books = await getCollection('books');
+  return books.map(book => ({
+    params: { slug: book.slug },
+    props: { book },
+  }));
+}
+
+const { book } = Astro.props;
+const { Content } = await book.render();
+---
+
+<Layout title={`${book.data.title} | Chris Berry - Author`}>
+  <article class="max-w-4xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <img 
+        src={book.data.coverImage} 
+        alt={`Cover of ${book.data.title}`}
+        class="w-full rounded-lg shadow-lg"
+      />
+      
+      <div>
+        <h1 class="text-sky-800 text-4xl font-bold mb-4">{book.data.title}</h1>
+        <p class="text-gray-300 mb-6">{book.data.description}</p>
+        
+        <div class="mb-6">
+          <h2 class="text-xl font-semibold mb-2">Details</h2>
+          <dl class="grid grid-cols-2 gap-2">
+            <dt class="text-gray-400">Published</dt>
+            <dd>{formatTZ(book.data.publishDate, 'MMMM d, yyyy', { timeZone: 'UTC' })}</dd>          
+            <dt class="text-gray-400">ISBN</dt>
+            <dd>{book.data.isbn}</dd>
+            <dt class="text-gray-400">Genre</dt>
+            <dd>{book.data.genre.join(', ')}</dd>
+          </dl>
+        </div>
+
+        <div class="space-x-4">
+          {book.data.buyLinks.map(link => (
+            <BuyButton store={link.store} url={link.url} />
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="prose prose-invert max-w-none mt-12">
+      <Content />
+    </div>
+  </article>
+</Layout>

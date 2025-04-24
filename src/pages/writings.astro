@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PlatformCard from '../components/PlatformCard.astro';
+
+const platforms = [
+  {
+    platform: 'Medium',
+    description: 'Deep dives into the craft of writing, behind-the-scenes looks at my creative process, and industry insights. Updated weekly with fresh perspectives on storytelling and the writing life.',
+    url: 'https://medium.com/@chris.berry07',
+    icon: `<svg fill="currentColor" viewBox="0 0 24 24">
+      <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+    </svg>`
+  },
+  {
+    platform: 'Substack',
+    description: 'Subscribe to my newsletter for exclusive content, early access to new work, and monthly writing prompts. Join a community of passionate readers and writers.',
+    url: 'https://substack.com/@rawthreads',
+    icon: `<svg fill="currentColor" viewBox="0 0 24 24">
+      <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+    </svg>`
+  }
+];
+---
+
+<Layout title="Writings | Chris Berry - Author">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold mb-8">My Writings</h1>
+    
+    <div class="prose prose-invert max-w-none mb-12">
+      <p class="text-xl">
+        Beyond my books, I share thoughts, insights, and stories across various platforms. 
+        Each space offers a unique perspective and way to connect with my work.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {platforms.map(platform => (
+        <PlatformCard {...platform} />
+      ))}
+    </div>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold mb-6">Latest Articles</h2>
+      <div class="space-y-6">
+        {/* Note: You would typically fetch and display actual articles here */}
+        <article class="border border-gray-800 rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">
+            <a href="#" class="hover:text-blue-400">The Art of World Building</a>
+          </h3>
+          <p class="text-gray-300">An exploration of creating immersive fictional universes...</p>
+          <div class="mt-4 text-sm text-gray-400">Published on Medium • 5 min read</div>
+        </article>
+        <article class="border border-gray-800 rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-2">
+            <a href="#" class="hover:text-blue-400">Finding Your Voice as a Writer</a>
+          </h3>
+          <p class="text-gray-300">Developing your unique writing style and perspective...</p>
+          <div class="mt-4 text-sm text-gray-400">Published on Substack • 8 min read</div>
+        </article>
+      </div>
+    </section>
+  </div>
+</Layout>
